@@ -1,9 +1,12 @@
 import javax.swing.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.*;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MainFrame extends JFrame{
 	public MainFrame(String s) {
@@ -30,6 +33,10 @@ public class MainFrame extends JFrame{
 				chooser.setDialogTitle("Select input file");
 				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				
+				Path currentRelativePath = Paths.get("");
+				String s = currentRelativePath.toAbsolutePath().toString();
+				
+				chooser.setCurrentDirectory(new File(s));
 				int returnVal = chooser.showOpenDialog(chooser);
 				if(returnVal == JFileChooser.APPROVE_OPTION){
 					
@@ -62,7 +69,7 @@ public class MainFrame extends JFrame{
 								
 						}
 						scanner.close();
-						g.writeGraph();
+						
 					}
 					catch (FileNotFoundException e) {
 						e.printStackTrace();

@@ -29,9 +29,9 @@ public class Graph {
 		return maxVertexDegree;
 	}
 	
-	public void writeGraph() {
+	/*public void writeGraph() { //to tak do testow ;)
 		System.out.println("Num of vertices " + vertices.size());
 		for (Edge e : edges)
 			System.out.println(e.getV1Id() + " " + e.getV2Id());
-	}
+	}*/
 }
