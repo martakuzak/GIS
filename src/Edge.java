@@ -13,9 +13,30 @@ public class Edge {
 		this.id = id;
 		color = -1;
 	}
-	
+	/**
+	 * Ustaw najni¿szy mo¿liwy kolor mniejszy od max. 
+	 * @param max 
+	 * @return zwraca ustawiony kolor lub -1, jeœli nie uda³o siê nadaæ koloru
+	 */
+		public int setMinCol(int max) {
+			int minCol = 0; 
+			while (minCol < max) {
+				if(v1.missingColor(minCol) && v2.missingColor(minCol)) {
+					setColor(minCol);
+					v1.removeMissingColor(minCol);
+					v2.removeMissingColor(minCol);
+					return minCol;
+				}
+				++ minCol;
+			}
+			return -1;
+		}
+		
 	public void setColor(int color) {
 		this.color = color;
+	}
+	public int getColor() {
+		return this.color;
 	}
 	public int getV1Id() {
 		return v1.getId();
@@ -24,21 +45,8 @@ public class Edge {
 		return v2.getId();
 	}
 	
-	public int setMinCol(int max) {
-		int minCol = 0;
-		while (minCol < max) {
-			if(v1.missingColor(minCol) && v2.missingColor(minCol)) {
-				setColor(minCol);
-				v1.removeMissingColor(minCol);
-				v2.removeMissingColor(minCol);
-				return minCol;
-			}
-			++ minCol;
-		}
-		return -1;
+	public int getId() {
+		return id;
 	}
-	
-	public int getColor() {
-		return this.color;
-	}
+
 }
