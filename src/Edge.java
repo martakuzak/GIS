@@ -23,4 +23,22 @@ public class Edge {
 	public int getV2Id() {
 		return v2.getId();
 	}
+	
+	public int setMinCol(int max) {
+		int minCol = 0;
+		while (minCol < max) {
+			if(v1.missingColor(minCol) && v2.missingColor(minCol)) {
+				setColor(minCol);
+				v1.removeMissingColor(minCol);
+				v2.removeMissingColor(minCol);
+				return minCol;
+			}
+			++ minCol;
+		}
+		return -1;
+	}
+	
+	public int getColor() {
+		return this.color;
+	}
 }

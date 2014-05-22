@@ -58,6 +58,8 @@ public class MainFrame extends JFrame{
 									}
 									
 								}
+								g.colorNC();
+								g.writeGraph();
 							}
 							else  {
 								System.err.println("Error while parsing file");
